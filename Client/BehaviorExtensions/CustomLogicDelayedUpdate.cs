@@ -29,7 +29,7 @@ namespace QuestingBots.BehaviorExtensions
         private float sprintDelayTime = 0;
 
         // Find by CreateNode(BotLogicDecision type, BotOwner bot) -> case BotLogicDecision.simplePatrol -> private gclass object
-        private GClass395 baseSteeringLogic = new GClass395();
+        private LookAround baseSteeringLogic = new LookAround();
 
         protected double ActionElpasedTime => actionElapsedTime.ElapsedMilliseconds / 1000.0;
         protected double ActionElapsedTimeRemaining => Math.Max(0, ObjectiveManager.MinElapsedActionTime - ActionElpasedTime);
@@ -89,7 +89,7 @@ namespace QuestingBots.BehaviorExtensions
             baseAction = _baseAction;
         }
 
-        public void UpdateBaseAction(GClass26 data)
+        public void UpdateBaseAction(CoreActionResultParams data)
         {
             baseAction?.UpdateNodeByMain(data);
         }

@@ -51,10 +51,10 @@ namespace QuestingBots.Routers.Internal
                 return null;
             }
 
-            Func<string, IRequestData, MongoId, string?, ValueTask<object>> func = async (url, info, sessionId, output) =>
+            Func<string, IRequestData, MongoId, string?, CancellationToken, ValueTask<object>> func = async (url, info, sessionId, output, cancellationToken) =>
                         await HandleRoute(Name, url, info, sessionId, output) ?? throw new InvalidOperationException("HandleRoute returned null");
 
-            Func<string, IRequestData, MongoId, string?, ValueTask<string?>> funcTyped = async (url, info, sessionId, output) =>
+            Func<string, IRequestData, MongoId, string?, CancellationToken, ValueTask<string?>> funcTyped = async (url, info, sessionId, output, cancellationToken) =>
                         await HandleRoute(Name, url, info, sessionId, output) ?? throw new InvalidOperationException("HandleRoute returned null");
 
             bool useTypedAction = typeof(T) != typeof(EmptyRequestData);

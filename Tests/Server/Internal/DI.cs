@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SPTarkov.Common.Logger.Handlers;
 using SPTarkov.DI;
 using SPTarkov.Server.Core.DI;
 using SPTarkov.Server.Core.Models.Spt.Mod;
 using SPTarkov.Server.Core.Utils;
-using SPTarkov.Server.Core.Utils.Logger.Handlers;
 
 namespace QuestingBots.Server.Internal;
 
@@ -54,7 +54,7 @@ public class DI
             {
                 continue;
             }
-            onLoad.OnLoad().Wait();
+            onLoad.OnLoadAsync(CancellationToken.None).Wait();
         }
     }
 

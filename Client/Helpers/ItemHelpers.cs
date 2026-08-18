@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Comfort.Common;
+using Diz.DependencyManager;
+using Diz.Resources;
 using EFT.Interactive;
 using EFT.InventoryLogic;
 using EFT;
@@ -266,7 +268,7 @@ namespace QuestingBots.Helpers
             return false;
         }
 
-        public static DependencyGraphClass<IEasyBundle>.GClass1659 LoadBundle(this Item item)
+        public static DependencyGraph<IEasyBundle>.TokenBase LoadBundle(this Item item)
         {
             try
             {

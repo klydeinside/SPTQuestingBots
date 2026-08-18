@@ -1,8 +1,8 @@
-﻿using SPTarkov.DI.Annotations;
-using SPTarkov.Server.Core.Models.Logging;
-using SPTarkov.Server.Core.Models.Spt.Logging;
-using SPTarkov.Server.Core.Models.Utils;
-using SPTarkov.Server.Core.Utils.Logger;
+using SPTarkov.Common.Logger;
+using SPTarkov.Common.Models.Logging;
+using SPTarkov.DI.Annotations;
+using Microsoft.Extensions.Logging;
+using Spectre.Console;
 
 namespace QuestingBots.Server.Internal;
 
@@ -11,7 +11,7 @@ namespace QuestingBots.Server.Internal;
 [Injectable(TypeOverride = typeof(SptLogger<>))]
 public class MockLogger<T> : ISptLogger<T>
 {
-    public void LogWithColor(string data, LogTextColor? textColor = null, LogBackgroundColor? backgroundColor = null, Exception? ex = null)
+    public void LogWithColor(string data, Color? textColor = null, Color? backgroundColor = null, Exception? ex = null)
     {
         Console.WriteLine(data);
     }
@@ -49,15 +49,10 @@ public class MockLogger<T> : ISptLogger<T>
     public void Log(
         LogLevel level,
         string data,
-        LogTextColor? textColor = null,
-        LogBackgroundColor? backgroundColor = null,
+        Color? textColor = null,
+        Color? backgroundColor = null,
         Exception? ex = null
     )
-    {
-        throw new NotImplementedException();
-    }
-
-    public void WriteToLogFile(string body, LogLevel level = LogLevel.Info)
     {
         throw new NotImplementedException();
     }
@@ -65,20 +60,5 @@ public class MockLogger<T> : ISptLogger<T>
     public bool IsLogEnabled(LogLevel level)
     {
         return true;
-    }
-
-    public void DumpAndStop()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void LogWithColor(string data, Exception? ex = null, LogTextColor? textColor = null, LogBackgroundColor? backgroundColor = null)
-    {
-        Console.WriteLine(data);
-    }
-
-    public void WriteToLogFile(object body)
-    {
-        Console.WriteLine(body);
     }
 }

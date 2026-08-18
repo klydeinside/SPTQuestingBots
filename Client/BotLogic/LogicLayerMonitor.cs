@@ -147,7 +147,7 @@ namespace QuestingBots.BotLogic
                 return "";
             }
 
-            AICoreActionResultStruct<BotLogicDecision, GClass26> lastDecision = layer.GetDecision();
+            AICoreActionResultStruct<BotLogicDecision, CoreActionResultParams> lastDecision = layer.GetDecision();
             if (lastDecision.Reason == null)
             {
                 return "";
